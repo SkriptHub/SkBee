@@ -95,11 +95,13 @@ public class Types {
                     }
                 }));
         }
+        
         if (Classes.getExactClassInfo(DustTransition.class) == null) {
             Classes.registerClass(new ClassInfo<>(DustTransition.class, "dusttransition")
                 .name(ClassInfo.NO_DOC).user("dust ?transitions?")
                 .parser(SkriptUtils.getDefaultParser()));
         }
+        
         if (Classes.getExactClassInfo(DustTransition.class) == null) {
             Classes.registerClass(new ClassInfo<>(Vibration.class, "vibration")
                 .name(ClassInfo.NO_DOC).user("vibrations?")
