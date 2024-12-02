@@ -198,34 +198,33 @@ public class Types {
                 }));
         }
 
-        if (HAS_ARMOR_TRIM) {
-            if (Classes.getExactClassInfo(ArmorTrim.class) == null) {
-                Classes.registerClass(new ClassInfo<>(ArmorTrim.class, "armortrim")
-                    .user("armor ?trims?")
-                    .name("ArmorTrim")
-                    .description("Represents an armor trim that may be applied to an item.",
-                        "Requires MC 1.19.4+")
-                    .since("2.13.0")
-                    .parser(new Parser<>() {
+        if (HAS_ARMOR_TRIM && Classes.getExactClassInfo(ArmorTrim.class) == null) {
+            Classes.registerClass(new ClassInfo<>(ArmorTrim.class, "armortrim")
+                .user("armor ?trims?")
+                .name("ArmorTrim")
+                .description("Represents an armor trim that may be applied to an item.",
+                    "Requires MC 1.19.4+")
+                .since("2.13.0")
+                .parser(new Parser<>() {
 
-                        @Override
-                        public boolean canParse(@NotNull ParseContext context) {
-                            return false;
-                        }
+                    @Override
+                    public boolean canParse(@NotNull ParseContext context) {
+                        return false;
+                    }
 
-                        @Override
-                        @SuppressWarnings("removal")
-                        public @NotNull String toString(ArmorTrim o, int flags) {
-                            String material = o.getMaterial().getKey().getKey();
-                            String pattern = o.getPattern().getKey().getKey();
-                            return String.format("ArmorTrim{material='%s',pattern='%s'}", material, pattern);
-                        }
+                    @Override
+                    @SuppressWarnings("removal")
+                    public @NotNull String toString(ArmorTrim o, int flags) {
+                        String material = o.getMaterial().getKey().getKey();
+                        String pattern = o.getPattern().getKey().getKey();
+                        return String.format("ArmorTrim{material='%s',pattern='%s'}", material, pattern);
+                    }
 
-                        @Override
-                        public @NotNull String toVariableNameString(ArmorTrim o) {
-                            return toString(o, 0);
-                        }
-                    }));
+                    @Override
+                    public @NotNull String toVariableNameString(ArmorTrim o) {
+                        return toString(o, 0);
+                    }
+                }));
             }
 
             if (Classes.getExactClassInfo(TrimMaterial.class) == null) {
@@ -247,20 +246,19 @@ public class Types {
             }
         }
 
-        if (HAS_CHUNK_LOAD_LEVEL) {
-            if (Classes.getExactClassInfo(LoadLevel.class) == null) {
-                EnumWrapper<LoadLevel> LOAD_LEVEL_ENUM = new EnumWrapper<>(LoadLevel.class, "", "level");
-                Classes.registerClass(LOAD_LEVEL_ENUM.getClassInfo("chunkloadlevel")
-                    .user("chunk ?load ?levels?")
-                    .name("Chunk Load Level")
-                    .description("Represents the types of load levels of a chunk.",
-                        "- `border_level` = Most game logic is not processed, including entities and redstone.",
-                        "- `entity_ticking_level` = All game logic is processed.",
-                        "- `inaccessible_level` = No game logic is processed, world generation may still occur.",
-                        "- `ticking_level` = All game logic except entities is processed.",
-                        "- `unloaded_level` = This chunk is not loaded.",
-                        "NOTE: These are auto-generated and may differ between server versions.")
-                    .since("2.17.0"));
+        if (HAS_CHUNK_LOAD_LEVEL && Classes.getExactClassInfo(LoadLevel.class) == null) {
+            EnumWrapper<LoadLevel> LOAD_LEVEL_ENUM = new EnumWrapper<>(LoadLevel.class, "", "level");
+            Classes.registerClass(LOAD_LEVEL_ENUM.getClassInfo("chunkloadlevel")
+                .user("chunk ?load ?levels?")
+                .name("Chunk Load Level")
+                .description("Represents the types of load levels of a chunk.",
+                    "- `border_level` = Most game logic is not processed, including entities and redstone.",
+                    "- `entity_ticking_level` = All game logic is processed.",
+                    "- `inaccessible_level` = No game logic is processed, world generation may still occur.",
+                    "- `ticking_level` = All game logic except entities is processed.",
+                    "- `unloaded_level` = This chunk is not loaded.",
+                    "NOTE: These are auto-generated and may differ between server versions.")
+                .since("2.17.0"));
             }
         }
 
@@ -368,7 +366,6 @@ public class Types {
                 .since("3.5.0"));
         }
 
-
         if (Classes.getExactClassInfo(Color.class) == null) {
             Classes.registerClass(new ClassInfo<>(Color.class, "bukkitcolor")
                 .user("bukkit ?colors?")
@@ -399,7 +396,6 @@ public class Types {
                     }
                 }));
         }
-
 
         if (Classes.getExactClassInfo(TreeType.class) == null) {
             EnumWrapper<TreeType> TREE_TYPE = new EnumWrapper<>(TreeType.class, "", "tree");
