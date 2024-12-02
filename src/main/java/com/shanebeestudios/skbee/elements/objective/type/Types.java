@@ -64,7 +64,7 @@ public class Types {
                 }));
         }
 
-        if (Skript.classExists("org.bukkit.scoreboard.Criteria")) {
+        if (Skript.classExists("org.bukkit.scoreboard.Criteria") && Classes.getExactClassInfo(Criteria.class) == null) {
             if (Classes.getExactClassInfo(Criteria.class) == null) {
                 Classes.registerClass(new ClassInfo<>(Criteria.class, "criteria")
                     .user("criterias?")
