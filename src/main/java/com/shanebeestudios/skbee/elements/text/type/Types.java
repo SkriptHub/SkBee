@@ -81,39 +81,38 @@ public class Types {
             }).changer(COMP_CHANGER)
         );
 
-        if (Skript.classExists("net.kyori.adventure.chat.SignedMessage")) {
-            if (Classes.getExactClassInfo(SignedMessage.class) == null) {
-                Classes.registerClass(new ClassInfo<>(SignedMessage.class, "signedmessage")
-                    .user("signed ?messages?")
-                    .name("Signed Chat Message")
-                    .description("Represents a signed chat message.")
-                    .examples("remove all players from signed chat message # will remove the message from the client")
-                    .parser(SkriptUtils.getDefaultParser())
-                    .since("3.5.0")
-                    .changer(new Changer<>() {
-                        @SuppressWarnings("NullableProblems")
-                        @Override
-                        public Class<?> @Nullable [] acceptChange(ChangeMode mode) {
-                            if (mode == ChangeMode.REMOVE || mode == ChangeMode.REMOVE_ALL)
-                                return CollectionUtils.array(Player[].class);
-                            return null;
-                        }
+        if (Skript.classExists("net.kyori.adventure.chat.SignedMessage") && Classes.getExactClassInfo(SignedMessage.class) == null) {
+            Classes.registerClass(new ClassInfo<>(SignedMessage.class, "signedmessage")
+                .user("signed ?messages?")
+                .name("Signed Chat Message")
+                .description("Represents a signed chat message.")
+                .examples("remove all players from signed chat message # will remove the message from the client")
+                .parser(SkriptUtils.getDefaultParser())
+                .since("3.5.0")
+                .changer(new Changer<>() {
+                    @SuppressWarnings("NullableProblems")
+                    @Override
+                    public Class<?> @Nullable [] acceptChange(ChangeMode mode) {
+                        if (mode == ChangeMode.REMOVE || mode == ChangeMode.REMOVE_ALL)
+                            return CollectionUtils.array(Player[].class);
+                        return null;
+                    }
 
-                        @SuppressWarnings({"NullableProblems", "ConstantValue"})
-                        @Override
-                        public void change(SignedMessage[] what, @Nullable Object[] delta, ChangeMode mode) {
-                            if (delta == null) return;
-                            for (SignedMessage signedMessage : what) {
-                                if (!signedMessage.canDelete()) continue;
+                    @SuppressWarnings({"NullableProblems", "ConstantValue"})
+                    @Override
+                    public void change(SignedMessage[] what, @Nullable Object[] delta, ChangeMode mode) {
+                        if (delta == null) return;
+                        for (SignedMessage signedMessage : what) {
+                            if (!signedMessage.canDelete()) continue;
 
-                                for (Object object : delta) {
-                                    if (object instanceof Player player) {
-                                        player.deleteMessage(signedMessage);
-                                    }
+                            for (Object object : delta) {
+                                if (object instanceof Player player) {
+                                    player.deleteMessage(signedMessage);
                                 }
                             }
                         }
-                    }));
+                    }
+                }));
             }
         }
 
