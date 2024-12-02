@@ -65,30 +65,29 @@ public class Types {
         }
 
         if (Skript.classExists("org.bukkit.scoreboard.Criteria") && Classes.getExactClassInfo(Criteria.class) == null) {
-            if (Classes.getExactClassInfo(Criteria.class) == null) {
-                Classes.registerClass(new ClassInfo<>(Criteria.class, "criteria")
-                    .user("criterias?")
-                    .name("Scoreboard - Criteria")
-                    .description("Represents a criteria for a scoreboard objective.",
-                        "See [**Scoreboard Criteria**](https://minecraft.wiki/w/Scoreboard#Criteria) on McWiki for more details.")
-                    .since("2.6.0")
-                    .parser(new Parser<>() {
+            Classes.registerClass(new ClassInfo<>(Criteria.class, "criteria")
+                .user("criterias?")
+                .name("Scoreboard - Criteria")
+                .description("Represents a criteria for a scoreboard objective.",
+                    "See [**Scoreboard Criteria**](https://minecraft.wiki/w/Scoreboard#Criteria) on McWiki for more details.")
+                .since("2.6.0")
+                .parser(new Parser<>() {
 
-                        @Override
-                        public boolean canParse(@NotNull ParseContext context) {
-                            return false;
-                        }
+                    @Override
+                    public boolean canParse(@NotNull ParseContext context) {
+                        return false;
+                    }
 
-                        @Override
-                        public @NotNull String toString(Criteria o, int flags) {
-                            return "criteria " + o.getName();
-                        }
+                    @Override
+                    public @NotNull String toString(Criteria o, int flags) {
+                        return "criteria " + o.getName();
+                    }
 
-                        @Override
-                        public @NotNull String toVariableNameString(Criteria o) {
-                            return "criteria{name=" + o.getName() + "}";
-                        }
-                    }));
+                    @Override
+                    public @NotNull String toVariableNameString(Criteria o) {
+                        return "criteria{name=" + o.getName() + "}";
+                    }
+                }));
             }
         }
 
