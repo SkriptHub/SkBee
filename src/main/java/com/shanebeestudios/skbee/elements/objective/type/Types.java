@@ -89,7 +89,6 @@ public class Types {
                     }
                 }));
             }
-        }
 
         if (Classes.getExactClassInfo(RenderType.class) == null) {
             EnumWrapper<RenderType> RENDER_ENUM = new EnumWrapper<>(RenderType.class);

@@ -114,7 +114,6 @@ public class Types {
                     }
                 }));
             }
-        }
 
         if (Classes.getExactClassInfo(TagResolver.class) == null) {
             Classes.registerClass(new ClassInfo<>(TagResolver.class, "tagresolver")

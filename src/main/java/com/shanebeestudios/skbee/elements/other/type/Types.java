@@ -244,7 +244,6 @@ public class Types {
                         "NOTE: These are auto-generated and may differ between server versions.")
                     .since("2.13.0"));
             }
-        }
 
         if (HAS_CHUNK_LOAD_LEVEL && Classes.getExactClassInfo(LoadLevel.class) == null) {
             EnumWrapper<LoadLevel> LOAD_LEVEL_ENUM = new EnumWrapper<>(LoadLevel.class, "", "level");
@@ -260,7 +259,6 @@ public class Types {
                     "NOTE: These are auto-generated and may differ between server versions.")
                 .since("2.17.0"));
             }
-        }
 
         if (Classes.getExactClassInfo(EntityEffect.class) == null) {
             EnumWrapper<EntityEffect> ENTITY_EFFECT_ENUM = new EnumWrapper<>(EntityEffect.class);
